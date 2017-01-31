@@ -28,7 +28,7 @@ class Chat extends Component {
       }
     };
     this.onSend = this.onSend.bind(this);
-    this.itemsRef = Firebase.initialize.database().ref('chat-1');
+    this.itemsRef = Firebase.initialize.database().ref('chat-' + this.props.data.id);
   }
 
   componentDidMount = () => {
