@@ -1,6 +1,6 @@
-**Ambiente react-native**
+**Ambiente react-native windows**
 
-1 Android setup
+**1 Android setup**
   http://facebook.github.io/react-native/releases/0.23/docs/android-setup.html
 
   install Git
@@ -14,7 +14,7 @@
 
   create ANDROID_HOME
 
-2 React native
+**2 React native**
   https://facebook.github.io/react-native/docs/getting-started.html
 
   install node
