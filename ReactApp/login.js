@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {Text, Alert, View, Button, StyleSheet, TextInput, Image} from 'react-native';
+import {Text, Alert, View, Button, StyleSheet, TextInput, Image, TouchableHighlight} from 'react-native';
 import {Actions, Scene, Router} from 'react-native-router-flux';
+
+import AppSessao from './componentes/sessao'
 
 class Login extends Component {
   constructor(props){
@@ -9,6 +11,10 @@ class Login extends Component {
       login: '',
       senha: ''
     }
+  }
+
+  componentDidMount = () => {
+    AppSessao.getItem('usuario').then((user) => {console.log(user)});
   }
 
   _login = () => {
@@ -54,6 +60,11 @@ class Login extends Component {
           <View style={{flex: 0.8}}>
             <Button color={'#ffcc00'} title={'Entrar'} onPress={() => this._login()} />
           </View>
+          <View style={{flex: 0.2}}>
+            <TouchableHighlight onPress={() => Actions.cadastro()} underlayColor={'transparent'}>
+              <Text style={{color:'#ffcc00'}}>cadastre-se</Text>
+            </TouchableHighlight>
+          </View>
         </View>
       )
   }
@@ -69,7 +80,7 @@ const styles = StyleSheet.create({
   input: {
     width: 300,
     height: 40,
-    borderColor: 'gray',
+    borderColor: 'transparent',
     borderWidth: 1,
     padding: 10,
     margin: 10

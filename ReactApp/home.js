@@ -10,6 +10,8 @@ import { TabViewAnimated, TabBar } from 'react-native-tab-view';
 import Contatos from './contatos'
 import Mensagens from './mensagens'
 
+//componentes
+import AppSessao from './componentes/sessao'
 
 class Home extends Component {
   constructor(props){
@@ -21,6 +23,12 @@ class Home extends Component {
        { key: '2', title: 'mensagens' },
       ]
     };
+  }
+
+  componentDidMount = () => {
+    AppSessao.getItem('usuario').then((data) => {
+      Alert.alert('Bem vindo!', JSON.parse(data).nome);
+    });
   }
 
   _handleChangeTab = (index) => {
