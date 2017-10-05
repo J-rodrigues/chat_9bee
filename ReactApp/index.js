@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-import {Text, Alert, View, Button} from 'react-native';
-import {Actions, Scene, Router} from 'react-native-router-flux';
+
+import {
+  Actions, 
+  Scene, 
+  Router
+} from 'react-native-router-flux';
 
 //telas
 import Login from './login'
-import Home from './home'
-import Chat from './chat'
 import Cadastro from './cadastro'
+import Contatos from './contatos'
 
 const scenes = Actions.create(
   <Scene key="root">
     <Scene key="login" component={Login} initial={true} hideNavBar={true} title="Login"/>
-    <Scene key="home" component={Home} hideNavBar={false} title="9bee"/>
-    <Scene key="chat" component={Chat} hideNavBar={false} />
     <Scene key="cadastro" component={Cadastro} hideNavBar={false} title={'Cadastro'} />
+    <Scene key="contatos" component={Contatos} hideNavBar={false} title={'Contatos'} />
   </Scene>
 );
 

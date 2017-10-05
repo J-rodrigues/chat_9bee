@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
-import {Text, Alert, View, Button, StyleSheet, TextInput, Image, TouchableHighlight} from 'react-native';
-import {Actions, Scene, Router} from 'react-native-router-flux';
 
-import AppSessao from './componentes/sessao'
+import {
+  Text, 
+  Alert, 
+  View, 
+  Button, 
+  StyleSheet, 
+  TextInput, 
+  Image, 
+  TouchableHighlight,
+  Platform
+} from 'react-native';
+
+import {
+  Actions, 
+  Scene, 
+  Router
+} from 'react-native-router-flux';
 
 class Login extends Component {
   constructor(props){
@@ -14,7 +28,11 @@ class Login extends Component {
   }
 
   componentDidMount = () => {
-    AppSessao.getItem('usuario').then((user) => {console.log(user)});
+    console.log("console 1")
+  }
+
+  componentWillMount = () => {
+    console.log("console 2")
   }
 
   _login = () => {
@@ -30,14 +48,14 @@ class Login extends Component {
     }).then((responseData) => {
         if (responseData.status == 200) {
           (responseData.json()).then((response) => {
-            Actions.home();
+            Actions.contatos();
           });
         }else {
           Alert.alert('Acesso inválido', responseData.status.toString());
         }
     }).catch((error) => {
         console.log(error);
-    }).done();
+    })
   }
 
   render() {
@@ -80,7 +98,7 @@ const styles = StyleSheet.create({
   input: {
     width: 300,
     height: 40,
-    borderColor: 'transparent',
+    borderColor: 'gray',
     borderWidth: 1,
     padding: 10,
     margin: 10

@@ -1,8 +1,22 @@
 import React, { Component } from 'react';
-import {Text, Alert, View, Button, StyleSheet, TextInput, Image} from 'react-native';
-import {Actions, Scene, Router} from 'react-native-router-flux';
 
-import AppSessao from './componentes/sessao'
+import {
+  Text, 
+  Alert, 
+  View, 
+  Button, 
+  StyleSheet, 
+  TextInput, 
+  Image, 
+  Platform
+} from 'react-native';
+
+import {
+  Actions,
+  Scene, 
+  Router
+} from 'react-native-router-flux';
+
 
 class Cadastro extends Component {
   constructor(props){
@@ -11,7 +25,7 @@ class Cadastro extends Component {
       nome: '',
       login: '',
       email: '',
-      password: '',
+      password: ''
     }
   }
 
@@ -27,13 +41,8 @@ class Cadastro extends Component {
             password: this.state.password,
         })}).then((responseData) => {
         if (responseData.status == 201) {
-          (responseData.json()).then((response) => {
-            AppSessao.setItem('usuario', JSON.stringify({
-              nome: this.state.nome,
-              login: this.state.login,
-              email: this.state.email})
-            );
-            Actions.home();
+          (responseData.json()).then((response) => {           
+            Actions.contatos();
           });
         }else {Alert.alert('Dados inválidos', responseData.status.toString())}
     }).catch((error) => {
@@ -81,7 +90,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     marginBottom: 15,
-    borderColor: 'transparent',
+    borderColor: 'gray'
   },
   form: {
     margin: 20
